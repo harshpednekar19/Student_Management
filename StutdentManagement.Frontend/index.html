@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Student Management System</h1>
+  <header>Student Management System</header>
+
+  <div id="messageBox"></div>
+<div class="container">
+  <!-- Table to show students -->
+  <table id="studentsTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Course</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Rows will be added dynamically -->
+    </tbody>
+  </table>
+  </div>
+<h2>Add new student</h2>
+<div class="container">
+<form id = "addStudentForm">
+  <label>Name:</label>
+  <input type="text" id="name" required><br><br>
+
+  <label>Email:</label>
+  <input type="email" id="email" required><br><br>
+
+  <label>Course:</label>
+  <input type="text" id="course" required><br><br>
+
+  <button type="submit">Add Students</button>
+</form>
+</div>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -159,3 +159,4 @@ C:\Users\pedne\OneDrive\Desktop\Student_management\StudentManagement.Api\obj\Deb
 C:\Users\pedne\OneDrive\Desktop\Student_management\StudentManagement.Api\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\pedne\OneDrive\Desktop\Student_management\StudentManagement.Api\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\pedne\OneDrive\Desktop\Student_management\StudentManagement.Api\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\pedne\OneDrive\Desktop\Student_management\StudentManagement.api\obj\Debug\net10.0\StudentManagement.Api.sourcelink.json

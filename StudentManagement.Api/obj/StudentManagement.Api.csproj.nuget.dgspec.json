@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pedne\\OneDrive\\Desktop\\Student_management\\StudentManagement.Api\\StudentManagement.Api.csproj": {}
+    "C:\\Users\\pedne\\OneDrive\\Desktop\\Student_management\\StudentManagement.api\\StudentManagement.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pedne\\OneDrive\\Desktop\\Student_management\\StudentManagement.Api\\StudentManagement.Api.csproj": {
+    "C:\\Users\\pedne\\OneDrive\\Desktop\\Student_management\\StudentManagement.api\\StudentManagement.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pedne\\OneDrive\\Desktop\\Student_management\\StudentManagement.Api\\StudentManagement.Api.csproj",
+        "projectUniqueName": "C:\\Users\\pedne\\OneDrive\\Desktop\\Student_management\\StudentManagement.api\\StudentManagement.Api.csproj",
         "projectName": "StudentManagement.Api",
-        "projectPath": "C:\\Users\\pedne\\OneDrive\\Desktop\\Student_management\\StudentManagement.Api\\StudentManagement.Api.csproj",
+        "projectPath": "C:\\Users\\pedne\\OneDrive\\Desktop\\Student_management\\StudentManagement.api\\StudentManagement.Api.csproj",
         "packagesPath": "C:\\Users\\pedne\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pedne\\OneDrive\\Desktop\\Student_management\\StudentManagement.Api\\obj\\",
+        "outputPath": "C:\\Users\\pedne\\OneDrive\\Desktop\\Student_management\\StudentManagement.api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pedne\\AppData\\Roaming\\NuGet\\NuGet.Config"

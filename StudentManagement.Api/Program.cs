@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using StudentManagement.Api.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,8 +12,17 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors( options =>
+{
+    options.AddPolicy("AllowFrontend",
+    policy => policy.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                );
+});
 
 var app = builder.Build();
+app.UseCors("AllowFrontend");
 
 // Swagger middleware
 if (app.Environment.IsDevelopment())

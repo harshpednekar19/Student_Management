@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1gqwIQu5caE=",
+  "dgSpecHash": "Nkzak/9j/m4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\pedne\\OneDrive\\Desktop\\Student_management\\StudentManagement.Api\\StudentManagement.Api.csproj",
+  "projectFilePath": "C:\\Users\\pedne\\OneDrive\\Desktop\\Student_management\\StudentManagement.api\\StudentManagement.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pedne\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\pedne\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",

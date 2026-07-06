@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register - Student Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Student Management System - Register</h1>
+
+  <!-- Toast + Spinner -->
+  <div id="toastContainer"></div>
+  <div id="spinner" class="spinner"></div>
+
+  <div id="registerContainer" class="container">
+    <h2>Register</h2>
+    <form id="registerForm">
+      <label>Email:</label>
+      <input type="email" id="registerEmail" required><br><br>
+
+      <label>Password:</label>
+      <input type="password" id="registerPassword" required><br><br>
+
+      <label>Role:</label>
+      <select id="registerRole" required>
+        <option value="Student">Student</option>
+        <option value="Teacher">Teacher</option>
+      </select><br><br>
+
+      <!-- Roll number only for students -->
+      <div id="rollNumberDiv" style="display:none;">
+        <label>Roll number:</label>
+        <input type="text" id="registerRollNumber"><br><br>
+      </div>
+
+      <button type="submit">Register</button>
+    </form>
+
+    <button onclick="window.location.href='login.html'">Back to Login</button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="common.js"></script>
+  <script src="register.js"></script>
+</body>
+</html>

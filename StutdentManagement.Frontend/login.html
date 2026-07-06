@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Student Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Student Management System - Login</h1>
+
+  <!-- Toast + Spinner -->
+  <div id="toastContainer"></div>
+  <div id="spinner" class="spinner"></div>
+
+  <div id="loginContainer" class="container">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <label>Email:</label>
+      <input type="email" id="loginEmail" required><br><br>
+
+      <label>Password:</label>
+      <input type="password" id="loginPassword" required><br><br>
+
+      <label>Role:</label>
+      <select id="loginRole" required>
+        <option value="Student">Student</option>
+        <option value="Teacher">Teacher</option>
+      </select><br><br>
+
+      <!-- Roll number only for students -->
+      <div id="rollNumberDiv" style="display:none;">
+        <label>Roll number:</label>
+        <input type="text" id="loginRollNumber"><br><br>
+      </div>
+
+      <!-- Teacher code only for teachers -->
+      <div id="teacherCodeDiv" style="display:none;">
+        <label>Teacher Code:</label>
+        <input type="text" id="teacherCode"><br><br>
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <button onclick="window.location.href='register.html'">Go to Register</button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="common.js"></script>
+  <script src="login.js"></script>
+</body>
+</html>

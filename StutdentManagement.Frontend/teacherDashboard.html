@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Teacher Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Teacher Dashboard - Manage Students</h2>
+
+  <!-- Toast + Spinner -->
+  <div id="toastContainer"></div>
+  <div id="spinner" class="spinner"></div>
+
+  <!-- Logout -->
+  <button onclick="logout()">Logout</button>
+
+  <!-- Add Student Form -->
+  <div class="container">
+    <h3>Add New Student</h3>
+    <form id="addStudentForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" placeholder="Name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" placeholder="Email" required>
+
+      <label for="course">Course:</label>
+      <input type="text" id="course" placeholder="Course">
+
+      <label for="rollNumber">Roll Number:</label>
+      <input type="text" id="rollNumber" placeholder="Roll Number" required>
+
+      <button type="submit">Add Student</button>
+    </form>
+  </div>
+
+  <!-- Students Table -->
+  <div class="container">
+    <h3>All Students</h3>
+    <table id="studentTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Course</th>
+          <th>Roll Number</th>
+          <th>Subjects</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="studentsTableBody">
+        <!-- Rows injected dynamically -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Edit Modal (optional, for editing student info) -->
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h3>Edit Student</h3>
+      <form id="editStudentForm">
+        <input type="hidden" id="editId">
+
+        <label for="editName">Name:</label>
+        <input type="text" id="editName" required>
+
+        <label for="editEmail">Email:</label>
+        <input type="email" id="editEmail" required>
+
+        <label for="editCourse">Course:</label>
+        <input type="text" id="editCourse" required>
+
+        <label for="editRollNumber">Roll Number:</label>
+        <input type="text" id="editRollNumber" required>
+
+        <button type="submit">Save Changes</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="common.js"></script>
+  <script src="teacherDashboard.js"></script>
+</body>
+</html>

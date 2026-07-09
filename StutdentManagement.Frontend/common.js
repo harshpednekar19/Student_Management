@@ -48,3 +48,18 @@ function authHeaders() {
   const token = getToken();
   return token ? { "Authorization": `Bearer ${token}` } : {};
 }
+
+// Safely decode a JWT payload (handles base64url encoding + missing padding,
+// which plain atob() does not support and will throw on)
+function parseJwt(token) {
+  const base64Url = token.split(".")[1];
+  const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+  const padded = base64 + "===".slice((base64.length + 3) % 4);
+  const jsonPayload = decodeURIComponent(
+    atob(padded)
+      .split("")
+      .map(c => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
+      .join("")
+  );
+  return JSON.parse(jsonPayload);
+}

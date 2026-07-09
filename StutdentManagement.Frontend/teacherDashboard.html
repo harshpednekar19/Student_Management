@@ -35,6 +35,42 @@
     </form>
   </div>
 
+  <!-- Add Subjects & Marks (multiple at once) -->
+  <div class="container">
+    <h3>Add Subjects &amp; Marks</h3>
+    <form id="addSubjectsForm">
+      <label for="subjectStudentSelect">Student:</label>
+      <select id="subjectStudentSelect" required>
+        <option value="">-- Select a student --</option>
+      </select>
+
+      <div id="subjectRows"></div>
+
+      <button type="button" id="addSubjectRowBtn">+ Add Another Subject</button>
+      <button type="submit">Save Subjects</button>
+    </form>
+  </div>
+
+  <!-- Marks Summary -->
+  <div class="container">
+    <h3>Student Marks Summary</h3>
+    <table id="summaryTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Roll Number</th>
+          <th>Course</th>
+          <th>Subject</th>
+          <th>Marks</th>
+        </tr>
+      </thead>
+      <tbody id="summaryTableBody">
+        <!-- Rows injected dynamically -->
+      </tbody>
+    </table>
+  </div>
+
   <!-- Students Table -->
   <div class="container">
     <h3>All Students</h3>

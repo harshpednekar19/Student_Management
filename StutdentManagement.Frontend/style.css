@@ -210,3 +210,57 @@ header {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+#summaryTable th {
+  background-color: #4CAF50;
+  color: white;
+}
+#summaryTable td, #summaryTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+/* Add Subjects form */
+#addSubjectsForm select {
+  display: block;
+  width: 100%;
+  margin: 8px 0 16px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.subject-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.subject-row .subject-name-input {
+  flex: 2;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.subject-row .subject-marks-input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.subject-row .remove-row-btn {
+  background: #f44336;
+  color: white;
+  padding: 6px 10px;
+  flex-shrink: 0;
+}
+
+#addSubjectRowBtn {
+  background: #2196F3;
+  color: white;
+  display: block;
+  margin-bottom: 12px;
+}

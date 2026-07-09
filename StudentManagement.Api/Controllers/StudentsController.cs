@@ -2,9 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using StudentManagement.Api.Data;
 using StudentManagement.Api.Models;
-using Microsoft.EntityFrameworkCore;   // For Include, FirstOrDefaultAsync
-using System.Security.Claims;          // For FindFirstValue
-
+using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -16,20 +15,49 @@ public class StudentsController : ControllerBase
     // Teachers can view all students (with subjects)
     [Authorize(Roles = "Teacher")]
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Student>>> GetStudents()
+    public async Task<IActionResult> GetStudents()
     {
-        return await _context.Students.ToListAsync();
+        var students = await _context.Students
+             // ✅ only include Subjects
+            .AsNoTracking()           // ✅ prevents EF fix-up loops
+            .Select(s => new {
+                s.Id,
+                s.Name,
+                s.Email,
+                s.Course,
+                s.RollNumber,
+                Subjects = s.Subjects.Select(sub => new {
+                    sub.Name,
+                    sub.Marks
+                })
+            })
+            .ToListAsync();
+
+        return Ok(students);
     }
 
     // Students can view their own data by RollNumber from JWT
     [Authorize(Roles = "Student")]
     [HttpGet("me")]
-    public async Task<ActionResult<Student>> GetMyData()
+    public async Task<ActionResult<object>> GetMyData()
     {
         var rollNumber = User.FindFirstValue("RollNumber");
-        var student = await _context.Students.FirstOrDefaultAsync(s => s.RollNumber == rollNumber);
+        var student = await _context.Students
+            .Include(s => s.Subjects)
+            .AsNoTracking()
+            .FirstOrDefaultAsync(s => s.RollNumber == rollNumber);
+
         if (student == null) return NotFound();
-        return student;
+
+        return Ok(new
+        {
+            student.Id,
+            student.Name,
+            student.Email,
+            student.Course,
+            student.RollNumber,
+            Subjects = student.Subjects.Select(sub => new { sub.Name, sub.Marks })
+        });
     }
 
     // Students can view their own subjects by RollNumber
@@ -43,6 +71,7 @@ public class StudentsController : ControllerBase
 
         var student = await _context.Students
             .Include(s => s.Subjects)
+            .AsNoTracking()
             .FirstOrDefaultAsync(s => s.RollNumber == rollNumber);
 
         if (student == null)
@@ -94,37 +123,36 @@ public class StudentsController : ControllerBase
 
         return Ok(subjects);
     }
+
     // Teachers can add new students
-[Authorize(Roles = "Teacher")]
-[HttpPost]
-public async Task<ActionResult<Student>> AddStudent(Student student)
-{
-    if (string.IsNullOrWhiteSpace(student.Name) ||
-        string.IsNullOrWhiteSpace(student.Email) ||
-        string.IsNullOrWhiteSpace(student.Course) ||
-        string.IsNullOrWhiteSpace(student.RollNumber))
-        return BadRequest("Invalid student data");
+    [Authorize(Roles = "Teacher")]
+    [HttpPost]
+    public async Task<ActionResult<Student>> AddStudent(Student student)
+    {
+        if (string.IsNullOrWhiteSpace(student.Name) ||
+            string.IsNullOrWhiteSpace(student.Email) ||
+            string.IsNullOrWhiteSpace(student.Course) ||
+            string.IsNullOrWhiteSpace(student.RollNumber))
+            return BadRequest("Invalid student data");
 
-    _context.Students.Add(student);
-    await _context.SaveChangesAsync();
+        _context.Students.Add(student);
+        await _context.SaveChangesAsync();
 
-    return CreatedAtAction(nameof(GetStudents), new { id = student.Id }, student);
+        return CreatedAtAction(nameof(GetStudents), new { id = student.Id }, student);
+    }
 
-}
+    // Teachers can delete students
+    [Authorize(Roles = "Teacher")]
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteStudent(int id)
+    {
+        var student = await _context.Students.FindAsync(id);
+        if (student == null) return NotFound();
 
-[Authorize(Roles = "Teacher")]
-[HttpDelete("{id}")]
-public async Task<IActionResult> DeleteStudent(int id)
-{
-    var student = await _context.Students.FindAsync(id);
-    if (student == null) return NotFound();
-
-    _context.Students.Remove(student);
-    await _context.SaveChangesAsync();
-    return NoContent();
-}
-
-
+        _context.Students.Remove(student);
+        await _context.SaveChangesAsync();
+        return NoContent();
+    }
 }
 
 // DTO for subject input

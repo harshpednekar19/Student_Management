@@ -45,9 +45,14 @@ document.getElementById("loginForm").addEventListener("submit", async function (
     localStorage.setItem("token", data.token);
 
     // Optional: decode JWT payload to extract RollNumber claim
-    const payload = JSON.parse(atob(data.token.split(".")[1]));
-    if (payload.RollNumber) {
-      localStorage.setItem("rollNumber", payload.RollNumber);
+    try {
+      const payload = parseJwt(data.token);
+      if (payload.RollNumber) {
+        localStorage.setItem("rollNumber", payload.RollNumber);
+      }
+    } catch (decodeErr) {
+      console.error("Could not decode token payload:", decodeErr);
+      // Non-fatal: token is still saved and valid, just skip caching rollNumber
     }
 
     showToast("Login successful!", "success");

@@ -6,11 +6,26 @@
 </head>
 <body>
   <h2>Student Dashboard - My Data</h2>
+
+  <!-- Toast + Spinner -->
+  <div id="toastContainer"></div>
+  <div id="spinner" class="spinner"></div>
+
   <button onclick="logout()">Logout</button>
 
-  <div id="studentInfo"></div>
-  <h3>My Subjects & Marks</h3>
-  <table id="subjectsTable"></table>
+  <div class="container">
+    <div id="studentInfo"></div>
+  </div>
+
+  <div class="container">
+    <h3>My Subjects &amp; Marks</h3>
+    <table id="subjectsTable">
+      <thead>
+        <tr><th>Subject</th><th>Marks</th></tr>
+      </thead>
+      <tbody id="subjectsTableBody"></tbody>
+    </table>
+  </div>
   <script src="common.js"></script>
   <script src="studentDashboard.js"></script>
   
